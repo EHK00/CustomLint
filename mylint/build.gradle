@@ -1,0 +1,21 @@
+apply plugin: 'kotlin'
+
+dependencies {
+
+    def kotlinVersion = "1.3.50"
+    def lintVersion = "26.5.2"
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    compileOnly "com.android.tools.lint:lint-api:$lintVersion"
+    compileOnly "com.android.tools.lint:lint-checks:$lintVersion"
+
+    testImplementation "com.android.tools.lint:lint-tests:$lintVersion"
+    testImplementation "junit:junit:4.+"
+    testImplementation "org.assertj:assertj-core:3.9.0"
+
+}
+
+jar {
+    manifest {
+        attributes("Lint-registry": "com.ekh.mvllint.lint.IssueRegistry")
+    }
+}
